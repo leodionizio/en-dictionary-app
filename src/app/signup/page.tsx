@@ -17,7 +17,7 @@ const SignupPage = () => {
       className="flex flex-col justify-center text-center"
       style={{ height: "88vh" }}
     >
-      <h2 className="text-4xl mb-8">Signup</h2>
+      <h2 className="text-4xl mb-8">Create new account</h2>
       <SignupForm handleSignup={handleSignup} loading={loading} />
 
       <div className="mt-4">

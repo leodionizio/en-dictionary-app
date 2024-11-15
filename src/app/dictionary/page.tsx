@@ -16,7 +16,7 @@ const DictionaryPage = () => {
 
   const redirectToWordDetails = (key: any) => {
     const { word } = uniqueHistory[key];
-    router.push(`dictionary/${word}/details`);
+    router.push(`/dictionary/${word}/details`);
   };
 
   useEffect(() => {
