@@ -56,7 +56,23 @@ Certifique-se de ter o Node.js instalado na versão compatível com o projeto, v
 
 ## 🧪 Testes
 
-No momento, o projeto não possui testes configurados. Recomenda-se adicionar bibliotecas como Jest ou React Testing Library para testes futuros.
+### Execute os testes unitários e integração
+
+Para rodar os testes uma vez, execute o seguinte comando:
+
+```bash
+yarn test
+```
+
+### Execute os testes em modo de observação:
+
+Para rodar os testes e observar mudanças em tempo real, execute:
+
+```bash
+yarn test:watch
+```
+
+> Isso permitirá que você veja os resultados dos testes sempre que houver alterações nos arquivos.
 
 ## 📂 Estrutura do Projeto
 
@@ -77,7 +93,7 @@ Ainda restam algumas pendências de desenvolvimento para este projeto, que estã
 
 ### 🔧 Issues Pendentes
 
-- [ ] Implementar testes unitários com Jest e React Testing Library.
+- [x] Implementar testes unitários com Jest e React Testing Library.
 - [ ] Adicionar paginação na tela de listagem de palavras.
 - [ ] Adicionar uma documentação técnica ADR.
 - [ ] Implmentar validaçÕes nos campos de formulário nas telas de `signin` e `signup`.
