@@ -18,7 +18,7 @@ export const PageWrapper = ({ children }: PageWrapperProps) => {
   return (
     <>
       {displayMenu && <Header />}
-      <div className="flex flex-col p-6">{children}</div>
+      <div className="flex flex-col p-6 max-w-sm mx-auto">{children}</div>
     </>
   );
 };
