@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { NextUIProvider } from "@nextui-org/react";
+import { AuthProvider } from "./contexts/auth-context";
+import { FavoriteProvider } from "./contexts/favorites-context";
+import { PageWrapper } from "./components/page-wrapper";
+import { UserProfileProvider } from "./contexts/user-context";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -28,7 +35,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <NextUIProvider>
+          <AuthProvider>
+            <FavoriteProvider>
+              <UserProfileProvider>
+                <PageWrapper>
+                  <main className="light">{children}</main>
+                </PageWrapper>
+                <ToastContainer />
+              </UserProfileProvider>
+            </FavoriteProvider>
+          </AuthProvider>
+        </NextUIProvider>
       </body>
     </html>
   );
