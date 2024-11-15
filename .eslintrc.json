@@ -1,5 +1,15 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"],
+  "env": {
+    "jest": true // Isso permite o uso de matchers como toBeInTheDocument
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "plugin:jest/recommended", // Recomendação do plugin jest
+    "plugin:@typescript-eslint/recommended", // Recomendação do TypeScript
+    "plugin:testing-library/react" // Recomendação do plugin testing-library
+  ],
+  "plugins": ["jest", "@typescript-eslint", "testing-library"],
   "rules": {
     "@typescript-eslint/no-explicit-any": ["off"]
   }
