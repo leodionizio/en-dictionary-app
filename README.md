@@ -100,3 +100,4 @@ Ainda restam algumas pendências de desenvolvimento para este projeto, que estã
 - [x] Implementar loading nas reuiqisçÕes
 - [x] Implementar mensagem de feedback ao usuário nas açÕes da aplicação.
 - [ ] Controlador de versionamento e CHANGELOG.
+- [ ] Docker para execução/deploy da aplicação.
