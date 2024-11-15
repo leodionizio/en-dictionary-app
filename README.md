@@ -91,8 +91,6 @@ yarn test:watch
 
 Ainda restam algumas pendências de desenvolvimento para este projeto, que estão listadas abaix.
 
-### 🔧 Issues Pendentes
-
 - [x] Implementar testes unitários com Jest e React Testing Library.
 - [ ] Adicionar paginação na tela de listagem de palavras.
 - [ ] Adicionar uma documentação técnica ADR.
