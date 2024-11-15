@@ -83,3 +83,4 @@ Ainda restam algumas pendências de desenvolvimento para este projeto, que estã
 - [ ] Implmentar validaçÕes nos campos de formulário nas telas de `signin` e `signup`.
 - [x] Implementar loading nas reuiqisçÕes
 - [x] Implementar mensagem de feedback ao usuário nas açÕes da aplicação.
+- [ ] Controlador de versionamento e CHANGELOG.
