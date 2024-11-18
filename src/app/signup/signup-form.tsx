@@ -9,6 +9,12 @@ export type SignupFormData = {
   password: string;
 };
 
+export type SignupErrorsData = {
+  name?: string;
+  email?: string;
+  password?: string;
+};
+
 type SignupFormProps = {
   loading: boolean;
   handleSignup: (params: SignupFormData) => void;
@@ -21,6 +27,22 @@ const SignupForm = ({ handleSignup, loading }: SignupFormProps) => {
     password: "",
   });
 
+  const [errors, setErrors] = useState<SignupErrorsData>({});
+
+  const handleValidateFormField = (field, value) => {
+    if (!value) {
+      setErrors({ [field]: "This field is required" });
+
+      return;
+    }
+
+    setErrors({ [field]: undefined });
+  };
+
+  const hasFormError = () =>
+    Object.values(errors).some((error) => !!error) ||
+    Object.values(form).some((field) => !field);
+
   return (
     <div className="flex flex-col gap-4">
       <Input
@@ -31,6 +53,10 @@ const SignupForm = ({ handleSignup, loading }: SignupFormProps) => {
         variant="bordered"
         color="primary"
         radius="md"
+        className="text-start"
+        isInvalid={!!errors.name}
+        onBlur={(evt) => handleValidateFormField("name", evt.target.value)}
+        errorMessage={errors.name}
       />
 
       <Input
@@ -42,6 +68,10 @@ const SignupForm = ({ handleSignup, loading }: SignupFormProps) => {
         variant="bordered"
         color="primary"
         radius="md"
+        className="text-start"
+        isInvalid={!!errors.email}
+        onBlur={(evt) => handleValidateFormField("email", evt.target.value)}
+        errorMessage={errors.email}
       />
 
       <Input
@@ -53,6 +83,10 @@ const SignupForm = ({ handleSignup, loading }: SignupFormProps) => {
         variant="bordered"
         color="primary"
         radius="md"
+        className="text-start"
+        isInvalid={!!errors.password}
+        onBlur={(evt) => handleValidateFormField("password", evt.target.value)}
+        errorMessage={errors.password}
       />
 
       <Button
@@ -61,6 +95,7 @@ const SignupForm = ({ handleSignup, loading }: SignupFormProps) => {
         fullWidth
         color="primary"
         isLoading={loading}
+        isDisabled={hasFormError()}
       >
         Signup
       </Button>
