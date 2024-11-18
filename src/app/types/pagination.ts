@@ -6,3 +6,5 @@ export type Paginated<T> = {
   hasNext: boolean;
   hasPrev: boolean;
 };
+
+export type PaginatedType = "next" | "prev";

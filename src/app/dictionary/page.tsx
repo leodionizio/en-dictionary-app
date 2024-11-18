@@ -1,6 +1,11 @@
 "use client";
 import { useEffect } from "react";
-import { Autocomplete, AutocompleteItem, Spinner } from "@nextui-org/react";
+import {
+  Autocomplete,
+  AutocompleteItem,
+  Button,
+  Spinner,
+} from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { useDictionary } from "@/app/hooks/dictionary";
 import { useHistory } from "@/app/hooks/history";
@@ -17,6 +22,16 @@ const DictionaryPage = () => {
   const redirectToWordDetails = (key: any) => {
     const { word } = uniqueHistory[key];
     router.push(`/dictionary/${word}/details`);
+  };
+
+  const loadMoreWords = async () => {
+    await getWords("next");
+    setTimeout(() => {
+      scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth",
+      });
+    }, 100);
   };
 
   useEffect(() => {
@@ -44,9 +59,13 @@ const DictionaryPage = () => {
         ))}
       </Autocomplete>
 
-      {words.map((word) => (
-        <WordItem summaryWord={{ word }} key={word} />
+      {words.map((word, index) => (
+        <WordItem summaryWord={{ word }} key={`${word}-${index}`} />
       ))}
+
+      <Button onClick={loadMoreWords} variant="light" color="primary">
+        See more
+      </Button>
     </div>
   );
 };

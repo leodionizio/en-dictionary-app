@@ -4,10 +4,16 @@ import { Paginated } from "@/app/types/pagination";
 import { apiErrorHandler } from "@/app/utils/api-error-handler";
 const dictionaryPath = "entries/en";
 
+export type GetWordsParams = {
+  cursor?: string;
+};
+
 export const dictionaryService = (apiClient: AxiosInstance) => {
-  const getWords = async (): Promise<Paginated<string>> => {
+  const getWords = async (
+    params?: GetWordsParams
+  ): Promise<Paginated<string>> => {
     try {
-      const response = await apiClient.get(dictionaryPath);
+      const response = await apiClient.get(dictionaryPath, { params });
       return response.data;
     } catch (error) {
       const errorMessage = apiErrorHandler(error);

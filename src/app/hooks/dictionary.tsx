@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useApiService } from "@/app/api";
-import { Paginated } from "@/app/types/pagination";
+import { Paginated, PaginatedType } from "@/app/types/pagination";
 import { useToastMessage } from "./toast";
 
 export const useDictionary = () => {
@@ -9,20 +9,34 @@ export const useDictionary = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const { toast } = useToastMessage();
   const apiService = useApiService();
-  // Adicionar os parametros de paginação e filtro
-  const getWords = useCallback(async () => {
-    setLoading(true);
-    try {
-      const paginatedWords = await apiService.dictionary.getWords();
-      setPaginatedWords(paginatedWords);
-      setWords([...words, ...paginatedWords.results]);
-      return paginatedWords.results;
-    } catch (error) {
-      toast.error(error.message);
-    } finally {
-      setLoading(false);
-    }
-  }, [setLoading, apiService, setPaginatedWords, setWords, toast]);
+
+  const getPaginationCursor = (type: PaginatedType) => {
+    const { hasNext, hasPrev, next, previous } = paginatedWords!;
+    if (type === "next" && hasNext) return next;
+    if (type === "prev" && hasPrev) return previous;
+
+    return undefined;
+  };
+
+  const getWords = useCallback(
+    async (type?: PaginatedType) => {
+      setLoading(true);
+      try {
+        const cursor = type ? getPaginationCursor(type) : undefined;
+        const wordListPaginated = await apiService.dictionary.getWords({
+          cursor,
+        });
+        setPaginatedWords(wordListPaginated);
+        setWords([...words, ...wordListPaginated.results]);
+        return wordListPaginated.results;
+      } catch (error) {
+        toast.error(error.message);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [setLoading, apiService, setPaginatedWords, setWords, toast]
+  );
 
   const getWordDetails = useCallback(
     async (word: string) => {

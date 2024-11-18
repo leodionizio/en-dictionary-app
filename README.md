@@ -92,10 +92,9 @@ yarn test:watch
 Ainda restam algumas pendências de desenvolvimento para este projeto, que estão listadas abaix.
 
 - [x] Implementar testes unitários com Jest e React Testing Library.
-- [ ] Adicionar paginação na tela de listagem de palavras.
+- [x] Adicionar paginação na tela de listagem de palavras.
 - [ ] Adicionar uma documentação técnica ADR.
 - [ ] Implmentar validaçÕes nos campos de formulário nas telas de `signin` e `signup`.
 - [x] Implementar loading nas reuiqisçÕes
 - [x] Implementar mensagem de feedback ao usuário nas açÕes da aplicação.
-- [ ] Controlador de versionamento e CHANGELOG.
 - [ ] Docker para execução/deploy da aplicação.
