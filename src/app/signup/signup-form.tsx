@@ -29,7 +29,7 @@ const SignupForm = ({ handleSignup, loading }: SignupFormProps) => {
 
   const [errors, setErrors] = useState<SignupErrorsData>({});
 
-  const handleValidateFormField = (field, value) => {
+  const handleValidateFormField = (field: string, value: string) => {
     if (!value) {
       setErrors({ [field]: "This field is required" });
 
@@ -55,7 +55,7 @@ const SignupForm = ({ handleSignup, loading }: SignupFormProps) => {
         radius="md"
         className="text-start"
         isInvalid={!!errors.name}
-        onBlur={(evt) => handleValidateFormField("name", evt.target.value)}
+        onBlur={(evt) => handleValidateFormField("name", (evt.target as HTMLInputElement).value)}
         errorMessage={errors.name}
       />
 
@@ -70,7 +70,7 @@ const SignupForm = ({ handleSignup, loading }: SignupFormProps) => {
         radius="md"
         className="text-start"
         isInvalid={!!errors.email}
-        onBlur={(evt) => handleValidateFormField("email", evt.target.value)}
+        onBlur={(evt) => handleValidateFormField("email", (evt.target as HTMLInputElement).value)}
         errorMessage={errors.email}
       />
 
@@ -85,7 +85,7 @@ const SignupForm = ({ handleSignup, loading }: SignupFormProps) => {
         radius="md"
         className="text-start"
         isInvalid={!!errors.password}
-        onBlur={(evt) => handleValidateFormField("password", evt.target.value)}
+        onBlur={(evt) => handleValidateFormField("password", (evt.target as HTMLInputElement).value)}
         errorMessage={errors.password}
       />
 

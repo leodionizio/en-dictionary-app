@@ -21,7 +21,7 @@ export const useApiClient = (): AxiosInstance => {
     if (authorizationToken) {
       client.defaults.headers["Authorization"] = `Bearer ${authorizationToken}`;
     }
-  }, [token]);
+  }, [client.defaults.headers, token]);
 
   return client;
 };

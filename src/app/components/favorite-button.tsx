@@ -20,7 +20,7 @@ export const FavoriteButton = ({ word }: FavoriteButtonProps) => {
       return;
     }
     addWordToFavorites(word);
-  }, [removeWordFromFavorites, addWordToFavorites, word]);
+  }, [isFavoriteWord, word, addWordToFavorites, removeWordFromFavorites]);
 
   return loading ? (
     <div className="flex justify-center">

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { useRouter } from "next/navigation";
 import { WordItem } from "../word-item";
 import { FavoriteButton } from "../../components/favorite-button";

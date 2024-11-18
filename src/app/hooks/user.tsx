@@ -19,7 +19,7 @@ export const useUserProfile = () => {
     } finally {
       setLoading(false);
     }
-  }, [setLoading, apiService, toast]);
+  }, [apiService, setUser, toast]);
 
   return { getUserProfile, user, loading };
 };

@@ -10,13 +10,16 @@ export const useDictionary = () => {
   const { toast } = useToastMessage();
   const apiService = useApiService();
 
-  const getPaginationCursor = (type: PaginatedType) => {
-    const { hasNext, hasPrev, next, previous } = paginatedWords!;
-    if (type === "next" && hasNext) return next;
-    if (type === "prev" && hasPrev) return previous;
+  const getPaginationCursor = useCallback(
+    (type: PaginatedType) => {
+      const { hasNext, hasPrev, next, previous } = paginatedWords!;
+      if (type === "next" && hasNext) return next;
+      if (type === "prev" && hasPrev) return previous;
 
-    return undefined;
-  };
+      return undefined;
+    },
+    [paginatedWords]
+  );
 
   const getWords = useCallback(
     async (type?: PaginatedType) => {
@@ -35,7 +38,7 @@ export const useDictionary = () => {
         setLoading(false);
       }
     },
-    [setLoading, apiService, setPaginatedWords, setWords, toast]
+    [getPaginationCursor, apiService.dictionary, words, toast]
   );
 
   const getWordDetails = useCallback(
@@ -49,7 +52,7 @@ export const useDictionary = () => {
         setLoading(false);
       }
     },
-    [setLoading, apiService, setPaginatedWords, setWords, toast]
+    [setLoading, apiService, toast]
   );
 
   return { getWords, getWordDetails, words, paginatedWords, loading };

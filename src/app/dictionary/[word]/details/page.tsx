@@ -19,10 +19,11 @@ const WordPage = () => {
   const getWord = useCallback(async () => {
     const word = await getWordDetails(wordParam as string);
     if (word) setWordDetails(word);
-  }, [getWordDetails]);
+  }, [getWordDetails, wordParam]);
 
   useEffect(() => {
     getWord();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return loading && !wordDetails ? (

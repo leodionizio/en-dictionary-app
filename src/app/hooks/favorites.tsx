@@ -25,7 +25,7 @@ export const useFavorites = () => {
     } finally {
       setLoading(false);
     }
-  }, [apiService, setFavorites]);
+  }, [apiService, setFavorites, toast]);
 
   const addWordToFavorites = useCallback(
     async (word: string) => {
@@ -41,7 +41,7 @@ export const useFavorites = () => {
         setLoading(false);
       }
     },
-    [apiService, getFavoritesWords, loading, setLoading]
+    [apiService, getFavoritesWords, toast]
   );
 
   const removeWordFromFavorites = useCallback(
@@ -58,7 +58,7 @@ export const useFavorites = () => {
         setLoading(false);
       }
     },
-    [apiService, getFavoritesWords]
+    [apiService, getFavoritesWords, toast]
   );
 
   return {

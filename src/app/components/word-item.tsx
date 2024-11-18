@@ -12,7 +12,7 @@ export const WordItem = ({ summaryWord }: WordItemProps) => {
 
   const redirectToWordDetails = useCallback(() => {
     router.push(`/dictionary/${summaryWord.word}/details`);
-  }, []);
+  }, [router, summaryWord.word]);
 
   return (
     <Card>

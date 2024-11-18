@@ -11,11 +11,12 @@ const UserProfilePage = () => {
 
   useEffect(() => {
     getUserProfile();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const redirectToPage = useCallback((page: string) => {
     router.push(page);
-  }, []);
+  }, [router]);
 
   return loading && !user ? (
     <div className="flex justify-center">
